@@ -9,3 +9,8 @@
     float: left;
     margin: 5px;
 }
+
+.button-box{
+    background-color: pink;
+    margin: 10px 3px;
+}

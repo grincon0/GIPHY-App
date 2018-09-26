@@ -7,7 +7,7 @@ const renderButtons = (strings) =>  {
     strings.forEach((term) => {
         let btn = $('<button>', {
             id: `submit-query`,
-            class: "btn btn-primary emotion",
+            class: "button-box btn  emotion",
             search: term,
             type: "button",
             text: term
