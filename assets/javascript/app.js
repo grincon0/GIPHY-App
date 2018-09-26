@@ -1,5 +1,5 @@
 //contains the the strings will will display on our button
-var strings = ["happy", "sad", "mad", "love", "determined", "worried", "empowered", "aloof", "concentrated", "seriously", "insane"];
+const strings = ["happy", "sad", "mad", "love", "determined", "worried", "empowered", "aloof", "concentrated", "seriously", "insane"];
 
 //passes the strings Array to render each button
 const renderButtons = (strings) =>  {
