@@ -21,7 +21,7 @@ const renderButtons = (strings) =>  {
     });
 }
 
-//communitcates with GIPHY Api, gathers the data for each gif, then renders them to the DOM
+//communicates with GIPHY API, gathers the data for each gif, then renders them to the DOM
 const getPictures = (caller) => {
     const apiKey = "8GVaytATdSSwaU1NWa4z9MoufR2eIw54";
     let userInput = $(caller).attr("search");
@@ -36,7 +36,9 @@ const getPictures = (caller) => {
         $("#img-results").empty();
         let source = response.data;
         for(var i = 0; i < source.length; i++){
-            let newDiv = $('<div>');
+            let newDiv = $('<div>',{
+                class : 'gif-box'
+            });
             let id = source[i].id;
             let header = $(`<h6> Rated : ${source[i].rating}</h6>`);
             let img = $(`<img id=${id} src=${source[i].images.fixed_height.url} data-state=anim data-anim=${source[i].images.fixed_height.url} 

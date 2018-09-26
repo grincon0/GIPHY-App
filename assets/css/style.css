@@ -5,3 +5,7 @@
 .card-back{
     background-color: #17b854;
 }
+.gif-box{
+    float: left;
+    margin: 5px;
+}
