@@ -1,4 +1,4 @@
-const strings = ["happy", "sad", "mad", "love", "determined", "worried", "empowered", "aloof", "concentrated", "seriously", "insane"];
+var strings = ["happy", "sad", "mad", "love", "determined", "worried", "empowered", "aloof", "concentrated", "seriously", "insane"];
 
 const renderButtons = (strings) =>  {
     $("#btn-div").empty();
@@ -11,6 +11,11 @@ const renderButtons = (strings) =>  {
             text: term
         });      
         $("#btn-div").append(btn);
+    });
+
+    $(".emotion").on("click", function(){
+        let caller = $(this);
+        getPictures(caller);
     });
 }
 
@@ -31,7 +36,8 @@ const getPictures = (caller) => {
         for(var i = 0; i < source.length; i++){
             let newDiv = $('<div>');
             let header = $(`<h6> Rated : ${source[i].rating}</h6>`);
-            let img = $(`<img id=gif src=${source[i].images.fixed_height.url} data-state=anim data-anim=${source[i].images.fixed_height.url} data-still=${source[i].images.fixed_height_still.url}></img>`);
+            let img = $(`<img id=gif src=${source[i].images.fixed_height.url} data-state=anim data-anim=${source[i].images.fixed_height.url} 
+            data-still=${source[i].images.fixed_height_still.url}></img>`);
 
             $(newDiv).append(header).append(img);
             $("#img-results").append(newDiv);
@@ -64,12 +70,15 @@ const toggleGif = (gif) => {
 $(document).ready(function () {
     renderButtons(strings);
 
-    $(".emotion").on("click", function(){
 
-        
 
-        let caller = $(this);
-        getPictures(caller);
+    $("#create-btn").on("click", function (){
+        let input = $("#add-button").val().trim();
+        console.log(input)
+        strings.push(input);
+        renderButtons(strings);
+
+        $("#add-button").val("");
     });
 
  
