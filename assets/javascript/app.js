@@ -31,23 +31,28 @@ const getPictures = (caller) => {
         method : "GET"
     }).then(function(response){
         $("#img-results").empty();
+        console.log(response);
         let source = response.data;
 
         for(var i = 0; i < source.length; i++){
             let newDiv = $('<div>');
+            let id = source[i].id;
             let header = $(`<h6> Rated : ${source[i].rating}</h6>`);
-            let img = $(`<img id=gif src=${source[i].images.fixed_height.url} data-state=anim data-anim=${source[i].images.fixed_height.url} 
+            let img = $(`<img id=${id} src=${source[i].images.fixed_height.url} data-state=anim data-anim=${source[i].images.fixed_height.url} 
             data-still=${source[i].images.fixed_height_still.url}></img>`);
 
             $(newDiv).append(header).append(img);
             $("#img-results").append(newDiv);
+
+            $(`#${id}`).on("click", function () {
+                let gif = $(this);
+                console.log(gif);
+                toggleGif(gif);
+                
+            });
         }
 
-        $("#gif").on("click", function () {
-            let gif = $(this);
-            console.log(gif);
-            toggleGif(gif);
-        });
+        
     }).catch(function(err){
         throw err;
     });
